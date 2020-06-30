@@ -1,0 +1,84 @@
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+iframe {
+    border: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.25);
+    animation: opacity .25s linear;
+}
+
+.overlay:hover {
+    cursor: pointer;
+}
+
+#va {
+    width: 375px;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 1em;
+    width: 300px;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fromTop .75s ease-in-out forwards, opacity .4s linear forwards;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row:not(:last-child) {
+    margin-bottom: .5em;
+}
+
+.label {
+    font-weight: 600;
+}
+
+.modal:hover {
+    cursor: auto;
+}
+
+.modal-text {
+    text-align: center;
+    width: 100%;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fromTop {
+    from {
+        top: -100px;
+    }
+    to {
+        top: 30px;
+    }
+}

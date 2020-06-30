@@ -1,0 +1,146 @@
+/*GLOBAL*/
+
+html {
+    --primary-color: #256525;
+    --secondary-color: #cba93f;
+    background-color: #f0f2f5;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.left-btn, .right-btn {
+    font-family: cursive;
+}
+
+.calendar {
+    width: 200px;
+    border: 1px solid #256525;
+    border-top: none;
+    background-color: white;
+}
+
+/*MONTH */
+
+.month {
+    justify-content: space-between;
+    color: white;
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+}
+
+/*WEEK*/
+
+.week-label {
+    background-color: var(--secondary-color);
+    color: green;
+    justify-content: space-evenly;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.week {
+    justify-content: space-evenly;
+}
+
+/*DAY*/
+
+.day {
+    padding: 5px;
+    font-weight: 600;
+}
+
+.day-btn {
+    padding: 5px;
+}
+
+.day-btn, .week-label > * {
+    text-align: center;
+    width: calc(100%/7);
+}
+
+.day-btn.today {
+    color: white;
+    background-color: var(--secondary-color);
+}
+
+.day-btn.clickable:hover, .day-btn.selected {
+    color: white;
+    background-color: var(--primary-color);
+}
+
+/*UTIL*/
+
+.row {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.25);
+    animation: opacity .25s linear;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 100px;
+    width: 350px;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fromTop .75s ease-in-out forwards, opacity .4s linear forwards;
+}
+
+.modal-text {
+    text-align: center;
+}
+
+.overlay:hover {
+    cursor: pointer;
+}
+
+.modal:hover {
+    cursor: auto;
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fromTop {
+    from {
+        top: -100px;
+    }
+    to {
+        top: 30px;
+    }
+}

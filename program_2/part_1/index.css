@@ -1,0 +1,7 @@
+.children {
+    padding-left: 1em;
+}
+
+.label:hover {
+    cursor: pointer;
+}
