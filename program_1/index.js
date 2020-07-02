@@ -54,7 +54,8 @@ const Day = dayNum => {
         const isToday = TODAY.getMonth() === currMonth && TODAY.getFullYear() === currYear && TODAY.getDate() === dayNum;
         const displayDate = new Date(currYear, currMonth, dayNum);
         if (isToday) className += " today";
-        if ((Math.abs(TODAY - displayDate)/(1000*60*60*24)) <= 90) className += " clickable";
+        const diff = ((TODAY - displayDate)/(1000*60*60*24));
+        if (0 <= diff && diff <= 90) className += " clickable";
         if (displayDate - selectedDate === 0) className += " selected";
         div.innerHTML = dayNum.toString();
         div.onclick = selectDate(dayNum);

@@ -1,10 +1,153 @@
-#root {
-    display: flex;
-    justify-content: center;
+html {
+    --primary-color: #256525;
+    --secondary-color: #cba93f;
+    --bg-color: #f0f2f5;
+    background-color: var(--bg-color);
 }
 
-iframe {
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+label {
+    margin-bottom: .5em;
+    font-size: .90em;
+}
+
+.top-bar {
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 30px;
+}
+
+.hidden-line {
+    width: 225px;
+    height: 28px;
+    padding-top: 5px;
+    background-image: linear-gradient(0deg,#afa 25%,#9e9 25%,#9e9 50%,#afa 50%,#afa 75%,#9e9 75%,#9e9 100%);
+    background-size: 20px 20px;
+}
+
+#chip {
+    padding: 1em;
+    height: 2em;
+}
+
+.display-card-number {
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.good-thru {
+    padding: 1em;
+}
+
+.good-thru > span:first-child {
+    color: var(--primary-color);
+    font-size: .75em;
+    margin-right: 1em;
+}
+
+.display-name {
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    padding-left: 1em;
+}
+
+.display-card-number,
+.display-exp-date,
+.display-name {
+    color: var(--secondary-color);
+}
+
+#root {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 100px;
+
+}
+
+.display-card {
+    padding: .5em 1em 1em 1em;
+    border: 1px solid var(--secondary-color);
+    border-radius: 1em;
+    height: fit-content;
+    width: 350px;
+    background-color: white;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.input-container {
+    margin: 1em 3em 0 3em;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: .5em 1em;
+    border: 1px solid transparent;
+    background-color: var(--bg-color);
+    border-radius: 1em;
+    margin: 0 .5em;
+}
+
+input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+button {
+    flex: auto;
+    background-color: #256525e6;
+    outline: none;
+    color: white;
+    border-radius: 2em;
+    padding: .75em 1.5em;
+    width: fit-content;
     border: none;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    margin: 2em 1.5em 1em 1.5em;
+}
+
+.form h1 {
+    margin: .5em 1em;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+button:disabled {
+    opacity: .5;
+}
+
+.buttons button:last-child {
+    justify-self: flex-end;
+}
+
+button:disabled:hover {
+    cursor: no-drop;
 }
 
 .overlay {
@@ -33,11 +176,12 @@ iframe {
     left: 50%;
     transform: translate(-50%, 0);
     padding: 1em;
-    width: 300px;
+    width: 350px;
     background-color: white;
     border-radius: 4px;
     display: flex;
     align-items: center;
+    border: 1px solid rgba(0,0,0,.25);
     justify-content: center;
     animation: fromTop .75s ease-in-out forwards, opacity .4s linear forwards;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -60,11 +204,34 @@ iframe {
     cursor: auto;
 }
 
+.cursive {
+    font-family: cursive;
+}
+
 .modal-text {
     text-align: center;
     width: 100%;
 }
 
+.logo .large {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.logo .large span:first-child,
+.logo .small span:first-child {
+    color: var(--primary-color);
+}
+
+.logo .large span:last-child,
+.logo .small span:last-child {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+.logo .small {
+    font-size: .75em;
+}
 @keyframes opacity {
     from {
         opacity: 0;
@@ -82,3 +249,65 @@ iframe {
         top: 30px;
     }
 }
+
+
+/*https://davidwalsh.name/css-flip*/
+
+/* entire container, keeps perspective */
+.flip-container {
+    perspective: 1000px;
+}
+/* flip the pane when hovered */
+.flip-container.active .flipper, .flip-container.active .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+    width: 350px;
+    height: 233px;
+    box-sizing: border-box;
+}
+
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.display-card.back {
+    padding: 1em 0;
+}
+
+.bottom-bar {
+    display: flex;
+    margin: 1em;
+}
+
+.display-security-code {
+    background-color: #afa;
+    width: 35px;
+    margin: 4px 0;
+    text-align: center;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    transform: rotateY(180deg);
+}
+
